@@ -1,0 +1,46 @@
+/* Add these styles to your CSS file */
+
+/* .services-access { */
+    /* Add any additional styling for the container */
+  
+  
+  .button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller screens */
+    justify-content: center;
+  }
+  
+  .card-link {
+    text-decoration: none;
+  }
+  
+  .service-button.card {
+    width: 200px; /* Set the initial width of the card */
+    height: 150px; /* Set the initial height of the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Add transitions for smooth animations */
+    background-color: #19874D; /* Set the background color of the boxes */
+    color: #ffffff; /* Set the text color to white */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a floating effect */
+  }
+  
+  .service-button.card:hover {
+    background-color: #146b3a; /* Change the background color on hover */
+    transform: translateY(-2px); /* Move the button slightly up on hover for a floating effect */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Increase the box shadow on hover */
+  }
+  
+  /* Media query for screens smaller than 768px (adjust as needed) */
+  @media (max-width: 768px) {
+    .service-button.card {
+      width: 100%; /* Make the cards take up the full width on smaller screens */
+      max-width: 300px; /* Limit the maximum width of the cards */
+    }
+  }
+  

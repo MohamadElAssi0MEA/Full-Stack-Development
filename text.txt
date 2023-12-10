@@ -1,0 +1,186 @@
+// import React, { useState } from 'react';
+import { Button, Modal, Form, Dropdown } from 'react-bootstrap';
+
+const PointOfSale = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [data, setData] = useState([
+    { barcodeId: '123', productName: 'Product A', price: 10.99, quantity: 2, total: 21.98 },
+    // Add more data as needed
+  ]);
+  const [selectedProductIndex, setSelectedProductIndex] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState('');
+  const [manualPrice, setManualPrice] = useState('');
+  const [saleType, setSaleType] = useState('');
+
+  const handleRemoveProduct = () => {
+    if (selectedProductIndex !== null) {
+      const newData = [...data];
+      newData.splice(selectedProductIndex, 1);
+      setData(newData);
+      setSelectedProductIndex(null); // Reset selected product index after removal
+    }
+  };
+
+  const handleButtonClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    // Reset the selected product, manual price, and sale type when closing the modal
+    setSelectedProduct('');
+    setManualPrice('');
+    setSaleType('');
+  };
+
+  const handleDropdownChange = (selectedProduct) => {
+    setSelectedProduct(selectedProduct);
+  };
+
+  const handleAddToTable = () => {
+    if (selectedProduct && manualPrice) {
+      const newData = [...data, {
+        barcodeId: '456',  // Generate a unique barcodeId or fetch from the server
+        productName: selectedProduct,
+        price: parseFloat(manualPrice),
+        quantity: 1,  // You can adjust the quantity as needed
+        total: parseFloat(manualPrice),
+        saleType: saleType, // Include sale type
+      }];
+
+      setData(newData);
+      handleCloseModal();
+    }
+  };
+
+  const handleCashButtonClick = () => {
+    handleButtonClick(); // Open modal
+    setSaleType('Cash');
+  };
+
+  const handleCardButtonClick = () => {
+    handleButtonClick(); // Open modal
+    setSaleType('Card');
+  };
+
+  return (
+    <div className="element-point-of-sale">
+      <div className="div">
+        <div className="logo-2">
+          {/* Omitted Logo component */}
+        </div>
+        
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Barcode ID</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Table Body */}
+            {data.map((item, index) => (
+              <tr key={index} onClick={() => setSelectedProductIndex(index)}>
+                <td>{item.barcodeId}</td>
+                <td>{item.productName}</td>
+                <td>{item.price}</td>
+                <td>{item.quantity}</td>
+                <td>{item.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Buttons */}
+        <Button className="button" onClick={handleRemoveProduct}>
+          <div className="text-wrapper-4">Remove Product</div>
+        </Button>
+        <Button className="div-wrapper" onClick={handleCardButtonClick}>
+          <div className="text-wrapper-4">Card</div>
+        </Button>
+        <Button className="button-5" onClick={handleCashButtonClick}>
+          <div className="text-wrapper-4">Cash</div>
+        </Button>
+        <Button className="button-10">
+          <div className="text-wrapper-4">Cancel Sale</div>
+        </Button>
+        <Button className="button-2" onClick={handleButtonClick}>
+          <div className="text-wrapper-5">Vegetable and Fruits</div>
+        </Button>
+
+        {/* Modal for dropdown selection */}
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Select Product</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              {/* Dropdown selection */}
+              <Form.Group controlId="productDropdown">
+                <Form.Label>Product</Form.Label>
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    {selectedProduct || 'Select Product'}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onSelect={() => handleDropdownChange('Product A')}>
+                      Product A
+                    </Dropdown.Item>
+                    <Dropdown.Item onSelect={() => handleDropdownChange('Product B')}>
+                      Product B
+                    </Dropdown.Item>
+                    {/* Add more product options as needed */}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Form.Group>
+
+              {/* Manual price input */}
+              <Form.Group controlId="manualPrice">
+                <Form.Label>Manual Price</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter price"
+                  value={manualPrice}
+                  onChange={(e) => setManualPrice(e.target.value)}
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleAddToTable}>
+              Add to Table
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Button className="button-3">
+          <div className="text-wrapper-4">Other</div>
+        </Button>
+        <Button className="button-4">
+          <div className="text-wrapper-4">Bread</div>
+        </Button>
+
+        <Button className="button-6">
+          <div className="text-wrapper-4">Customer Wait</div>
+        </Button>
+        <Button className="button-7">
+          <div className="text-wrapper-6">Customer 1</div>
+        </Button>
+        <Button className="button-8">
+          <div className="text-wrapper-7">Customer 2</div>
+        </Button>
+        <Button className="button-9">
+          <div className="text-wrapper-8">Customer 3</div>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default PointOfSale;

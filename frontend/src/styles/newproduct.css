@@ -1,0 +1,65 @@
+/* Add these styles to your CSS file */
+
+.new-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: calc(100% - 20px); /* Adjust as needed */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 20px); /* Adjust as needed */
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  .cancel-button,
+  .submit-button {
+    width: calc(48% - 5px); /* Adjust as needed */
+    background-color: #19874D; /* Set the background color of the buttons */
+    color: #ffffff; /* Set the text color to white */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-top: 10px solid transparent; /* Add a transparent top border with a height of 10px */
+  }
+  
+  .cancel-button:hover,
+  .submit-button:hover {
+    background-color: #146b3a; /* Change the background color on hover */
+  }
+  
+  .cancel-button {
+    margin-right: 5px; /* Add margin to create space between buttons */
+  }
+  

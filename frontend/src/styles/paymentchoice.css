@@ -1,0 +1,72 @@
+/* Add these styles to your CSS file */
+
+.analytics-report {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .back-button {
+    background-color: #19874D;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #146b3a;
+  }
+  
+  .payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .payment-card,
+  .payment-cash {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .payment-type {
+    font-size: 18px;
+    color: #19874D;
+  }
+  
+  .payment-number {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  .payment-card:hover,
+  .payment-cash:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
